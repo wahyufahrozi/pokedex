@@ -1,68 +1,88 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Pokemon
 
-## Available Scripts
+A Collection Of Character from Pokemon
 
-In the project directory, you can run:
+<p align="center">
+  <a href="https://nodejs.org/">
+    <img title="Restful API" height='200' src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png">
+  </a>
+</p>
+<p align="center">
+    <a href="#">
+    <img alt="David" src="https://img.shields.io/david/dev/wahyufahrozi/FrontEndReact">
+  </a>
+  <a href="https://github.com/iyansr?tab=followers">
+    <img title="Followers" src="https://img.shields.io/github/followers/wahyufahrozi?style=social">
+  </a>
+  <a href="#">
+    <img title="Open Source Love" src="https://badges.frapsoft.com/os/v1/open-source.svg?v=102">
+  </a>
+  <a href="#">
+    <img title="Repo Size" src="https://img.shields.io/github/repo-size/wahyufahrozi/FrontEndReact">
+  </a>
+  <a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg"></a>
+</p>
 
-### `npm start`
+## Table Of Contents
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Pokemon]
+  - [Table Of Content](#table-of-content)
+  - [Build Setup](#build-setup)
+  - [Stacks](#stacks)
+  - [Dependencies](#dependencies)
+  - [Aplication Structure](#aplication-Structure)
+  - [Screenshots](#screenshots)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Build Setup
 
-### `npm test`
+1. Clone repository
+   `$ git clone https://github.com/wahyufahrozi/pokedex`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install depedencies
 
-### `npm run build`
+```bash
+# with npm
+$ npm install
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# or with yarn
+$ yarn install
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+3. Start Web server
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+$ npm start
+```
 
-### `npm run eject`
+## Stacks
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- ReactJS
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [Bootstrap](https://www.npmjs.com/package/bootstrap) - Bootstrap, a CSS Framework.
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom) - DOM bindings for React Router.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Aplication Structure
 
-## Learn More
+- `index.js` - Entry point of our aplication
+- `src/Components` - This folder containt files that define all components
+- `src/Pokemon` - All pages of this web goes here
+- `src/layout` - This folder contain file structure component from web
+- `src/Assets` - This folder contain assets for this web, such as images
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Screenshots
 
-### Code Splitting
+- Home
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![Home](https://user-images.githubusercontent.com/22940581/72371494-1566a980-3737-11ea-8a7b-9cf53f51a27d.png)
 
-### Analyzing the Bundle Size
+- Details
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+![Details](https://user-images.githubusercontent.com/22940581/72371538-2ca59700-3737-11ea-888e-3443bc7c9e83.png)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Copyright © 2019 by Wahyu Fahrozi Rezeki Ramadhan
