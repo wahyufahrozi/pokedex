@@ -6,7 +6,7 @@ export default class HeaderComponents extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light">
-          <a className="navbar-brand" href="#!">
+          <a className="navbar-brand" href="/">
             <img
               src={require("../../Assets/logo.png")}
               width={100}
