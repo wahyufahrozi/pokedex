@@ -26,7 +26,6 @@ export default class PokemonCard extends Component {
     name: "",
     imageUrl: "",
     PokemonId: "",
-
     LoadingImage: true,
     manyrequest: false
   };
