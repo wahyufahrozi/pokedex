@@ -2,94 +2,85 @@ import React, { Component } from "react";
 import PokemonCard from "./PokemonCard";
 import HeaderComponents from "../layout/Header";
 import axios from "axios";
+import InfiniteScroll from "react-infinite-scroll-component";
 export default class PokemonList extends Component {
   constructor() {
     super();
     this.state = {
       url: "https://pokeapi.co/api/v2/pokemon",
-      pokemon: null,
-      search: "",
-      handlingInput: ""
+      pokemon: "",
+      types: []
     };
-
-    this.handleChangeSearch = this.handleChangeSearch.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
   }
+  fetchMoreData = async () => {
+    const response = await axios.get("https://pokeapi.co/api/v2/pokemon/");
+
+    const next = response.data.next;
+    let url = await axios.get(next);
+
+    setTimeout(() => {
+      this.setState(
+        {
+          pokemon: [...this.state.pokemon, ...url.data.results]
+        },
+        () => console.log("gabung", this.state.data)
+      );
+    }, 1500);
+  };
   async componentDidMount() {
+    const pokemonType = `https://pokeapi.co/api/v2/type/`;
+    const responsepokemonType = await axios.get(pokemonType);
+    // console.log("dad", responsepokemonType);
+
+    const types = responsepokemonType.data.results;
+
     const response = await axios.get(this.state.url);
-    this.setState({
-      pokemon: response.data.results
-    });
-  }
-  handleChangeSearch(e) {
-    e.preventDefault();
-    // console.log("COba", e.target.value);
 
     this.setState({
-      [e.target.name]: e.target.value
+      pokemon: response.data.results,
+      types
     });
-  }
-  handleSearch() {
-    if (this.state.search === "") {
-      this.setState({
-        handlingInput: "Please Input"
-      });
-    } else {
-      axios
-        .get(`https://pokeapi.co/api/v2/pokemon/${this.state.search}`)
-        .then(response => {
-          console.log("respon searc", response);
-          this.setState({
-            pokemon: response.data.results
-          });
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    }
   }
 
   render() {
+    const { pokemon } = this.state;
+
+    // console.log("results", results);
+
     return (
       <>
         <HeaderComponents />
-        <form
-          className="form-inline my-12 my-lg-0 "
-          style={{ marginLeft: "75%" }}
-        >
-          <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder={
-              this.state.handlingInput === ""
-                ? "input search text"
-                : this.state.handlingInput
-            }
-            aria-label="Search"
-            value={this.state.search}
-            name="search"
-            onChange={this.handleChangeSearch}
-            style={{ width: 200 }}
-          />
-          <button
-            className="btn btn-primary my-2 my-sm-0"
-            type="submit"
-            onClick={this.handleSearch}
-          >
-            Search
-          </button>
-        </form>
         <div className="container">
-          {this.state.pokemon ? (
-            <div className="row">
-              {this.state.pokemon.map(pokemon => (
-                <PokemonCard
-                  key={pokemon.name}
-                  name={pokemon.name}
-                  url={pokemon.url}
-                />
-              ))}
+          <div className="row">
+            <div className="col-md-4">
+              <label>Type</label>
+              <select className="form-control form-control-sm">
+                {this.state.types.map((content, index) => {
+                  return <option key={index}>{content.name}</option>;
+                })}
+              </select>
             </div>
+          </div>
+        </div>
+
+        <div className="container">
+          {pokemon ? (
+            <InfiniteScroll
+              dataLength={pokemon.length}
+              next={this.fetchMoreData}
+              hasMore={true}
+              loader={<h4>Loading ...</h4>}
+            >
+              <div className="row">
+                {pokemon.map(pokemon => (
+                  <PokemonCard
+                    key={pokemon.name}
+                    name={pokemon.name}
+                    url={pokemon.url}
+                  />
+                ))}
+              </div>
+            </InfiniteScroll>
           ) : (
             <div class="d-flex justify-content-center">
               <div class="spinner-grow text-dark" role="status">
