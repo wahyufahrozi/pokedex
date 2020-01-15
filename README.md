@@ -3,7 +3,7 @@
 A Collection Of Character from Pokemon
 
 <p align="center">
-  <a href="https://nodejs.org/">
+  <a href="https://reactjs.org/">
     <img title="Restful API" height='200' src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png">
   </a>
 </p>
