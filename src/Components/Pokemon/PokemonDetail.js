@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import typecolor from "../../Styles/Colors";
 import { Link } from "react-router-dom";
+import { PokemonDetailSub } from "./PokemonDetailSub";
+import { PokemonSummary } from "./PokemonSummary";
 export default class PokemonDetail extends Component {
   state = {
     stats: {
@@ -147,6 +149,23 @@ export default class PokemonDetail extends Component {
     });
   }
   render() {
+    const {
+      hp,
+      speed,
+      attack,
+      specialAttack,
+      defense,
+      specialDefense
+    } = this.state.stats;
+    const {
+      height,
+      weight,
+      catchRate,
+      eggGroup,
+      hatchsteps,
+      abilities,
+      evs
+    } = this.state;
     return (
       <>
         <Link to="/">
@@ -191,207 +210,28 @@ export default class PokemonDetail extends Component {
                 </div>
               </div>
             </div>
-            <div className="card-body">
-              <div className="row align-items-center">
-                <div className="col-md-4">
-                  <img
-                    src={this.state.imageUrl}
-                    className="card-img-top rounded mx-auto mt-2"
-                    style={{
-                      width: "200px"
-                    }}
-                    alt="..."
-                  />
-                </div>
-                <div className="col-md-8">
-                  <div className="row align-items-center">
-                    <div className="col-12 col-md-3">HP</div>
-                    <div className="col-12 col-md-9">
-                      <div className="progress">
-                        <div
-                          className="progress-bar progress-bar-striped progress-bar-animated"
-                          role="progressbar"
-                          aria-valuenow="75"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                          style={{
-                            width: `${this.state.stats.hp}%`
-                          }}
-                        >
-                          <small>{this.state.stats.hp}%</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="row align-items-center">
-                    <div className="col-12 col-md-3">Speed</div>
-                    <div className="col-12 col-md-9">
-                      <div className="progress">
-                        <div
-                          className="progress-bar progress-bar-striped progress-bar-animated"
-                          role="progressbar"
-                          aria-valuenow="75"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                          style={{
-                            width: `${this.state.stats.speed}%`
-                          }}
-                        >
-                          <small>{this.state.stats.speed}%</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row align-items-center">
-                    <div className="col-12 col-md-3">Attack</div>
-                    <div className="col-12 col-md-9">
-                      <div className="progress">
-                        <div
-                          className="progress-bar progress-bar-striped progress-bar-animated"
-                          role="progressbar"
-                          aria-valuenow="75"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                          style={{
-                            width: `${this.state.stats.attack}%`
-                          }}
-                        >
-                          <small>{this.state.stats.attack}%</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row align-items-center">
-                    <div className="col-12 col-md-3">Special Attack</div>
-                    <div className="col-12 col-md-9">
-                      <div className="progress">
-                        <div
-                          className="progress-bar progress-bar-striped progress-bar-animated"
-                          role="progressbar"
-                          aria-valuenow="75"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                          style={{
-                            width: `${this.state.stats.specialAttack}%`
-                          }}
-                        >
-                          <small>{this.state.stats.specialAttack}%</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row align-items-center">
-                    <div className="col-12 col-md-3">Defense</div>
-                    <div className="col-12 col-md-9">
-                      <div className="progress">
-                        <div
-                          className="progress-bar progress-bar-striped progress-bar-animated"
-                          role="progressbar"
-                          aria-valuenow="75"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                          style={{
-                            width: `${this.state.stats.defense}%`
-                          }}
-                        >
-                          <small>{this.state.stats.defense}%</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row align-items-center">
-                    <div className="col-12 col-md-3">Special Defense</div>
-                    <div className="col-12 col-md-9">
-                      <div className="progress">
-                        <div
-                          className="progress-bar progress-bar-striped progress-bar-animated"
-                          role="progressbar"
-                          aria-valuenow="75"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                          style={{
-                            width: `${this.state.stats.specialDefense}%`
-                          }}
-                        >
-                          <small>{this.state.stats.specialDefense}%</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="row mt-3 ml-5">
-                  <div className="col">
-                    <p>{this.state.description}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <PokemonDetailSub
+              imageUrl={this.state.imageUrl}
+              hp={hp}
+              speed={speed}
+              attack={attack}
+              specialAttack={specialAttack}
+              defense={defense}
+              specialDefense={specialDefense}
+              description={this.state.description}
+            />
             <hr />
             <div className="card-body">
               <div className="card-tilte text-center">Summary</div>
-              <div className="row mt-3">
-                <div className="col-md-6">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <h6 className="float-right">Height :</h6>
-                    </div>
-                    <div className="col-md-6">
-                      <h6 className="float-left">{this.state.height}</h6>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <h6 className="float-right">Weight :</h6>
-                    </div>
-                    <div className="col-md-6">
-                      <h6 className="float-left">{this.state.weight}</h6>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <h6 className="float-right">Catch Rate :</h6>
-                    </div>
-                    <div className="col-md-6">
-                      <h6 className="float-left">{this.state.catchRate}%</h6>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <h6 className="float-right">Egg Group :</h6>
-                    </div>
-                    <div className="col-md-6">
-                      <h6 className="float-left">{this.state.eggGroup}</h6>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <h6 className="float-right">Hatch Steps :</h6>
-                    </div>
-                    <div className="col-md-6">
-                      <h6 className="float-left">{this.state.hatchsteps}</h6>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <h6 className="float-right">Abilities :</h6>
-                    </div>
-                    <div className="col-md-6">
-                      <h6 className="float-left">{this.state.abilities}</h6>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <h6 className="float-right">Evs :</h6>
-                    </div>
-                    <div className="col-md-6">
-                      <h6 className="float-left">{this.state.evs}</h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <PokemonSummary
+                height={height}
+                weight={weight}
+                catchRate={catchRate}
+                eggGroup={eggGroup}
+                hatchsteps={hatchsteps}
+                abilities={abilities}
+                evs={evs}
+              />
             </div>
           </div>
         </div>
