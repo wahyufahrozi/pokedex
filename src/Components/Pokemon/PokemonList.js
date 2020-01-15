@@ -19,12 +19,9 @@ export default class PokemonList extends Component {
     let url = await axios.get(next);
 
     setTimeout(() => {
-      this.setState(
-        {
-          pokemon: [...this.state.pokemon, ...url.data.results]
-        },
-        () => console.log("gabung", this.state.data)
-      );
+      this.setState({
+        pokemon: [...this.state.pokemon, ...url.data.results]
+      });
     }, 1500);
   };
   async componentDidMount() {
@@ -56,7 +53,19 @@ export default class PokemonList extends Component {
               <label>Type</label>
               <select className="form-control form-control-sm">
                 {this.state.types.map((content, index) => {
-                  return <option key={index}>{content.name}</option>;
+                  return (
+                    <option key={index}>
+                      {content.name
+                        .toLowerCase()
+                        .split(" ")
+                        .map(
+                          Categoryname =>
+                            Categoryname.charAt(0).toUpperCase() +
+                            Categoryname.substring(1)
+                        )
+                        .join(" ")}
+                    </option>
+                  );
                 })}
               </select>
             </div>
