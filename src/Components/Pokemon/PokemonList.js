@@ -27,7 +27,6 @@ export default class PokemonList extends Component {
   async componentDidMount() {
     const pokemonType = `https://pokeapi.co/api/v2/type/`;
     const responsepokemonType = await axios.get(pokemonType);
-    // console.log("dad", responsepokemonType);
 
     const types = responsepokemonType.data.results;
 
@@ -41,8 +40,6 @@ export default class PokemonList extends Component {
 
   render() {
     const { pokemon } = this.state;
-
-    // console.log("results", results);
 
     return (
       <>
